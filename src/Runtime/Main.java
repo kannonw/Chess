@@ -41,5 +41,7 @@ public class Main {
 
         System.out.printf("%s - Move to: ", color);
         move_to = Screen.TransformInput(Scan.next());
+
+        Game.MovePiece(move, move_to);
     }
 }
