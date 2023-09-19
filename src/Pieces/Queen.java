@@ -6,13 +6,12 @@ public class Queen extends Piece{
     }
 
     @Override
-    public boolean[][] PossibleMoves() {
+    public boolean[][] PossibleMoves(Piece[][] board, Position pos) {
         return new boolean[0][];
     }
 
     @Override
     public char getLetter() {
-        char letter = 'Q';
-        return letter;
+        return 'Q';
     }
 }

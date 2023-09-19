@@ -1,12 +1,15 @@
+package Runtime;
+
 import Pieces.Piece;
+import Pieces.Position;
 
 public class Screen {
-    public static final int Width = 8;
-    public static final int Height = 8;
+    public static final int WIDTH = 8;
+    public static final int HEIGHT = 8;
 
     public static void UpdateBoard(Piece[][] board) {
-        for (int i = 0; i < Height; i++) {
-            for (int j = 0; j < Width; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] != null) {
                     System.out.printf("%c ", board[i][j].getLetter());
                 } else {
@@ -18,12 +21,12 @@ public class Screen {
     }
 
     public static void UpdateBoard(Piece[][] board, boolean[][] validMoves) {
-        for (int i = 0; i < Height; i++) {
-            for (int j = 0; j < Width; j++) {
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] != null) {
                     System.out.printf("%c ", board[i][j].getLetter());
                 } else if (validMoves[i][j]) {
-                    System.out.print("+ ");
+                    System.out.print("# ");
                 } else {
                     System.out.print("· ");
                 }
@@ -33,11 +36,12 @@ public class Screen {
     }
 
     public static Position TransformInput(String input) {
-        int x, y;
+        int row = input.charAt(0) - 97;
+        int col = Integer.parseInt(String.valueOf(input.charAt(1))) - 1;
 
-        x = input.charAt(0) - 97;
-        y = Integer.parseInt(String.valueOf(input.charAt(1))) - 1;
+        System.out.println(row);
+        System.out.println(col);
 
-        return new Position(x, y);
+        return new Position(row, col);
     }
 }

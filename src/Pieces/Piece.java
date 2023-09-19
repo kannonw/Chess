@@ -8,7 +8,7 @@ public abstract class Piece {
         this.Color = color;
     }
 
-    public abstract boolean[][] PossibleMoves();
+    public abstract boolean[][] PossibleMoves(Piece[][] board, Position pos);
 
     public abstract char getLetter();
 

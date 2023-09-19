@@ -1,3 +1,5 @@
+package Runtime;
+
 import Pieces.*;
 
 public class InstanceBoard {
@@ -19,9 +21,9 @@ public class InstanceBoard {
         board[0][6] = new Knight(PieceColor.WHITE);
         board[0][7] = new Rook(PieceColor.WHITE);
 
-        for (int i = 0; i < 8; i++) {
-            board[1][i] = new Pawn(PieceColor.WHITE);
-        }
+//        for (int i = 0; i < 8; i++) {
+//            board[1][i] = new Pawn(PieceColor.WHITE);
+//        }
 
         return board;
     }

@@ -1,7 +1,10 @@
+package Runtime;
+
 import Pieces.Piece;
+import Pieces.Position;
 
 public class Game {
-    private Piece[][] board = new Piece[Screen.Height][Screen.Width];
+    private Piece[][] board = new Piece[Screen.HEIGHT][Screen.WIDTH];
 
     public Piece[][] getBoard() {
         return board;
@@ -17,8 +20,9 @@ public class Game {
     }
 
     public boolean[][] GetValidMoves(Position pos) throws ChessException {
-        if (GetPiece(pos) != null) throw new ChessException("Position is empty.");
-        return GetPiece(pos).PossibleMoves();
+        if (GetPiece(pos) == null) throw new ChessException("Position is empty.");
+
+        return GetPiece(pos).PossibleMoves(board, pos);
     }
 
     public void MovePiece(Position pos, Position final_pos) {
