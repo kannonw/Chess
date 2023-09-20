@@ -1,18 +1,16 @@
 package Pieces;
 
-import java.awt.*;
-
 public enum PieceColor {
-    WHITE(Color.WHITE),
-    BLACK(Color.BLACK);
+    WHITE("\u001B[37m"),
+    BLACK("\u001B[33m");
 
-    private final Color color;
+    private final String color;
 
-    PieceColor(Color color) {
+    PieceColor(String color) {
         this.color = color;
     }
 
-    public Color getColor() {
+    public String getStringColor() {
         return this.color;
     }
 }
