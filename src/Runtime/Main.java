@@ -13,8 +13,7 @@ public class Main {
         try {
             while (true) {
                 try {
-                    Round("White");
-                    Round("Black");
+                    Round();
                 }
                 catch (ChessException e) {
                     System.out.printf("Warning: %s\n", e.getMessage());
@@ -22,24 +21,23 @@ public class Main {
             }
 
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
         }
     }
 
-    private static void Round(String color) throws ChessException {
+    private static void Round() throws ChessException {
         boolean[][] valid_moves;
         Position move, move_to;
 
         Screen.UpdateBoard(Game.getBoard());
 
-        System.out.printf("%s - Move: ", color);
+        System.out.print("\nMove: ");
         move = Screen.TransformInput(Scan.next());
         valid_moves = Game.GetValidMoves(move);
 
         Screen.UpdateBoard(Game.getBoard(), valid_moves);
 
-        System.out.printf("%s - Move to: ", color);
+        System.out.print("\nMove to: ");
         move_to = Screen.TransformInput(Scan.next());
 
         Game.MovePiece(move, move_to);

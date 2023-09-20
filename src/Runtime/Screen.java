@@ -7,13 +7,17 @@ public class Screen {
     public static final int WIDTH = 8;
     public static final int HEIGHT = 8;
 
+    private static final String RED = "\033[0;31m";
+
+    private static final String ANSI_RESET = "\u001B[0m";
+
     public static void UpdateBoard(Piece[][] board) {
         for (int i = 0; i < HEIGHT; i++) {
             System.out.printf("%d  ", 8 - i);
 
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] != null) {
-                    System.out.printf("%c ", board[i][j].getLetter());
+                    System.out.printf("%s%c%s ", board[i][j].getColor().getStringColor(), board[i][j].getLetter(), ANSI_RESET);
                 } else {
                     System.out.print("· ");
                 }
@@ -34,9 +38,9 @@ public class Screen {
 
             for (int j = 0; j < WIDTH; j++) {
                 if (board[i][j] != null) {
-                    System.out.printf("%c ", board[i][j].getLetter());
+                    System.out.printf("%s%c%s ", board[i][j].getColor().getStringColor(), board[i][j].getLetter(), ANSI_RESET);
                 } else if (validMoves[i][j]) {
-                    System.out.print("# ");
+                    System.out.printf("%s#%s ", RED, ANSI_RESET);
                 } else {
                     System.out.print("· ");
                 }
