@@ -1,4 +1,5 @@
 package Pieces;
+import Runtime.*;
 
 public class Rook extends Piece{
 
@@ -8,7 +9,63 @@ public class Rook extends Piece{
 
     @Override
     public boolean[][] PossibleMoves(Piece[][] board, Position pos) {
-        return new boolean[0][];
+        boolean[][] validMoves = new boolean[Screen.HEIGHT][Screen.WIDTH];
+        Piece rook = board[pos.Row][pos.Col];
+        Piece piece;
+
+        for (int i = 1; i < pos.Row; i++) {
+            piece = board[pos.Row - i][pos.Col];
+
+            if (piece == null) {
+                validMoves[pos.Row - i][pos.Col] = true;
+            } else if (piece.getColor() != rook.getColor()) {
+                validMoves[pos.Row - i][pos.Col] = true;
+                break;
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 1; i < Screen.HEIGHT - pos.Row; i++) {
+            piece = board[pos.Row + i][pos.Col];
+
+            if (piece == null) {
+                validMoves[pos.Row + i][pos.Col] = true;
+            } else if (piece.getColor() != rook.getColor()) {
+                validMoves[pos.Row + i][pos.Col] = true;
+                break;
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 1; i < pos.Col; i++) {
+            piece = board[pos.Row][pos.Col - i];
+
+            if (piece == null) {
+                validMoves[pos.Row][pos.Col - i] = true;
+            } else if (piece.getColor() != rook.getColor()) {
+                validMoves[pos.Row][pos.Col - i] = true;
+                break;
+            } else {
+                break;
+            }
+        }
+
+        for (int i = 1; i < Screen.WIDTH - pos.Col; i++) {
+            piece = board[pos.Row][pos.Col + i];
+
+            if (piece == null) {
+                validMoves[pos.Row][pos.Col + i] = true;
+            } else if (piece.getColor() != rook.getColor()) {
+                validMoves[pos.Row][pos.Col + i] = true;
+                break;
+            } else {
+                break;
+            }
+        }
+
+        return validMoves;
     }
 
     @Override
