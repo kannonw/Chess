@@ -29,6 +29,8 @@ public class Game {
         if (!MoveIsValid(pos, final_pos)) throw new ChessException("This move is not allowed.");
 
         board[final_pos.Row][final_pos.Col] = GetPiece(pos);
+        board[final_pos.Row][final_pos.Col].FirstMoveDone();
+
         board[pos.Row][pos.Col] = null;
     }
 
