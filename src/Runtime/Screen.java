@@ -37,7 +37,9 @@ public class Screen {
             System.out.printf("%d  ", 8 - i);
 
             for (int j = 0; j < WIDTH; j++) {
-                if (board[i][j] != null) {
+                if (board[i][j] != null && validMoves[i][j]) {
+                    System.out.printf("%s%c%s ", RED, board[i][j].getLetter(), ANSI_RESET);
+                } else if (board[i][j] != null) {
                     System.out.printf("%s%c%s ", board[i][j].getColor().getStringColor(), board[i][j].getLetter(), ANSI_RESET);
                 } else if (validMoves[i][j]) {
                     System.out.printf("%s#%s ", RED, ANSI_RESET);

@@ -3,22 +3,22 @@ import Runtime.*;
 
 public class Rook extends Piece{
 
-    public Rook(PieceColor color) {
-        super(color);
+    public Rook(Game game, PieceColor color) {
+        super(game, color);
     }
 
     @Override
-    public boolean[][] PossibleMoves(Piece[][] board, Position pos) {
+    public boolean[][] PossibleMoves(Position pos) {
         boolean[][] validMoves = new boolean[Screen.HEIGHT][Screen.WIDTH];
-        Piece rook = board[pos.Row][pos.Col];
+        Piece[][]board = Game.getBoard();
         Piece piece;
 
-        for (int i = 1; i < pos.Row; i++) {
+        for (int i = 1; i <= pos.Row; i++) {
             piece = board[pos.Row - i][pos.Col];
 
             if (piece == null) {
                 validMoves[pos.Row - i][pos.Col] = true;
-            } else if (piece.getColor() != rook.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row - i][pos.Col] = true;
                 break;
             } else {
@@ -31,7 +31,7 @@ public class Rook extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row + i][pos.Col] = true;
-            } else if (piece.getColor() != rook.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row + i][pos.Col] = true;
                 break;
             } else {
@@ -39,12 +39,12 @@ public class Rook extends Piece{
             }
         }
 
-        for (int i = 1; i < pos.Col; i++) {
+        for (int i = 1; i <= pos.Col; i++) {
             piece = board[pos.Row][pos.Col - i];
 
             if (piece == null) {
                 validMoves[pos.Row][pos.Col - i] = true;
-            } else if (piece.getColor() != rook.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row][pos.Col - i] = true;
                 break;
             } else {
@@ -57,7 +57,7 @@ public class Rook extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row][pos.Col + i] = true;
-            } else if (piece.getColor() != rook.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row][pos.Col + i] = true;
                 break;
             } else {

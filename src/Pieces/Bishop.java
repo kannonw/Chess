@@ -3,21 +3,22 @@ import Runtime.*;
 
 public class Bishop extends Piece {
 
-    public Bishop(PieceColor color) {
-        super(color);
+    public Bishop(Game game, PieceColor color) {
+        super(game, color);
     }
 
     @Override
-    public boolean[][] PossibleMoves(Piece[][] board, Position pos) {
+    public boolean[][] PossibleMoves(Position pos) {
         boolean[][] validMoves = new boolean[Screen.HEIGHT][Screen.WIDTH];
-        Piece bishop = board[pos.Row][pos.Col];
+        Piece[][]board = Game.getBoard();
+
 
         for (int i = 1; pos.Col + i < Screen.WIDTH && pos.Row + i < Screen.HEIGHT; i++) {
             Piece piece = board[pos.Row+i][pos.Col+i];
 
             if (piece == null) {
                 validMoves[pos.Row+i][pos.Col+i] = true;
-            } else if (piece.getColor() != bishop.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row+i][pos.Col+i] = true;
                 break;
             } else {
@@ -30,7 +31,7 @@ public class Bishop extends Piece {
 
             if (piece == null) {
                 validMoves[pos.Row-i][pos.Col+i] = true;
-            } else if (piece.getColor() != bishop.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row-i][pos.Col+i] = true;
             } else {
                 break;
@@ -42,7 +43,7 @@ public class Bishop extends Piece {
 
             if (piece == null) {
                 validMoves[pos.Row+i][pos.Col-i] = true;
-            } else if (piece.getColor() != bishop.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row+i][pos.Col-i] = true;
             } else {
                 break;
@@ -54,7 +55,7 @@ public class Bishop extends Piece {
 
             if (piece == null) {
                 validMoves[pos.Row-i][pos.Col-i] = true;
-            } else if (piece.getColor() != bishop.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row-i][pos.Col-i] = true;
             } else {
                 break;

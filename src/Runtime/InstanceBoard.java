@@ -4,44 +4,39 @@ import Pieces.*;
 
 public class InstanceBoard {
 
-    public static Piece[][] InstancePieces(Piece[][] board) {
-        board = InstaceWhitePieces(board);
-
-        return InstaceBlackPieces(board);
+    public static void InstancePieces(Game game, Piece[][] board) {
+        InstaceWhitePieces(game, board);
+        InstaceBlackPieces(game, board);
     }
 
 
-    private static Piece[][] InstaceWhitePieces(Piece[][] board) {
-        board[0][0] = new Rook(PieceColor.BLACK);
-        board[0][1] = new Knight(PieceColor.BLACK);
-        board[0][2] = new Bishop(PieceColor.BLACK);
-        board[0][3] = new Queen(PieceColor.BLACK);
-        board[0][4] = new King(PieceColor.BLACK);
-        board[0][5] = new Bishop(PieceColor.BLACK);
-        board[0][6] = new Knight(PieceColor.BLACK);
-        board[0][7] = new Rook(PieceColor.BLACK);
+    private static void InstaceWhitePieces(Game game, Piece[][] board) {
+        board[0][0] = new Rook(game, PieceColor.BLACK);
+        board[0][1] = new Knight(game, PieceColor.BLACK);
+        board[0][2] = new Bishop(game, PieceColor.BLACK);
+        board[1][3] = new Queen(game, PieceColor.BLACK);
+        board[0][4] = new King(game, PieceColor.BLACK);
+        board[0][5] = new Bishop(game, PieceColor.BLACK);
+        board[0][6] = new Knight(game, PieceColor.BLACK);
+        board[0][7] = new Rook(game, PieceColor.BLACK);
 
-        for (int i = 0; i < 8; i++) {
-            board[1][i] = new Pawn(PieceColor.BLACK);
-        }
-
-        return board;
+//        for (int i = 0; i < 8; i++) {
+//            board[1][i] = new Pawn(game, PieceColor.BLACK);
+//        }
     }
 
-    private static Piece[][] InstaceBlackPieces(Piece[][] board) {
-        board[7][0] = new Rook(PieceColor.WHITE);
-        board[7][1] = new Knight(PieceColor.WHITE);
-        board[7][2] = new Bishop(PieceColor.WHITE);
-        board[7][3] = new Queen(PieceColor.WHITE);
-        board[7][4] = new King(PieceColor.WHITE);
-        board[7][5] = new Bishop(PieceColor.WHITE);
-        board[7][6] = new Knight(PieceColor.WHITE);
-        board[7][7] = new Rook(PieceColor.WHITE);
+    private static void InstaceBlackPieces(Game game, Piece[][] board) {
+        board[7][0] = new Rook(game, PieceColor.WHITE);
+        board[7][1] = new Knight(game, PieceColor.WHITE);
+        board[7][2] = new Bishop(game, PieceColor.WHITE);
+        board[7][3] = new Queen(game, PieceColor.WHITE);
+        board[7][4] = new King(game, PieceColor.WHITE);
+        board[7][5] = new Bishop(game, PieceColor.WHITE);
+        board[7][6] = new Knight(game, PieceColor.WHITE);
+        board[7][7] = new Rook(game, PieceColor.WHITE);
 
-        for (int i = 0; i < 8; i++) {
-            board[6][i] = new Pawn(PieceColor.WHITE);
-        }
-
-        return board;
+//        for (int i = 0; i < 8; i++) {
+//            board[6][i] = new Pawn(game, PieceColor.WHITE);
+//        }
     }
 }

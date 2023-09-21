@@ -3,14 +3,14 @@ import Runtime.*;
 
 
 public class Queen extends Piece{
-    public Queen(PieceColor color) {
-        super(color);
+    public Queen(Game game, PieceColor color) {
+        super(game, color);
     }
 
     @Override
-    public boolean[][] PossibleMoves(Piece[][] board, Position pos) {
+    public boolean[][] PossibleMoves(Position pos) {
         boolean[][] validMoves = new boolean[Screen.HEIGHT][Screen.WIDTH];
-        Piece queen = board[pos.Row][pos.Col];
+        Piece[][] board = Game.getBoard();
         Piece piece;
 
         for (int i = 1; pos.Col + i < Screen.WIDTH && pos.Row + i < Screen.HEIGHT; i++) {
@@ -18,7 +18,7 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row+i][pos.Col+i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row+i][pos.Col+i] = true;
                 break;
             } else {
@@ -31,7 +31,7 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row-i][pos.Col+i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row-i][pos.Col+i] = true;
             } else {
                 break;
@@ -43,7 +43,7 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row+i][pos.Col-i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row+i][pos.Col-i] = true;
             } else {
                 break;
@@ -55,19 +55,19 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row-i][pos.Col-i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row-i][pos.Col-i] = true;
             } else {
                 break;
             }
         }
 
-        for (int i = 1; i < pos.Row; i++) {
+        for (int i = 1; i <= pos.Row; i++) {
             piece = board[pos.Row - i][pos.Col];
 
             if (piece == null) {
                 validMoves[pos.Row - i][pos.Col] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row - i][pos.Col] = true;
                 break;
             } else {
@@ -80,7 +80,7 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row + i][pos.Col] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row + i][pos.Col] = true;
                 break;
             } else {
@@ -88,12 +88,12 @@ public class Queen extends Piece{
             }
         }
 
-        for (int i = 1; i < pos.Col; i++) {
+        for (int i = 1; i <= pos.Col; i++) {
             piece = board[pos.Row][pos.Col - i];
 
             if (piece == null) {
                 validMoves[pos.Row][pos.Col - i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row][pos.Col - i] = true;
                 break;
             } else {
@@ -106,7 +106,7 @@ public class Queen extends Piece{
 
             if (piece == null) {
                 validMoves[pos.Row][pos.Col + i] = true;
-            } else if (piece.getColor() != queen.getColor()) {
+            } else if (piece.getColor() != this.getColor()) {
                 validMoves[pos.Row][pos.Col + i] = true;
                 break;
             } else {
