@@ -5,6 +5,7 @@ import Pieces.Position;
 import java.util.Scanner;
 
 public class Main {
+    
 
     private static Scanner Scan = new Scanner(System.in);
     private static Game Game = new Game();
